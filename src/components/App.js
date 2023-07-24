@@ -1,13 +1,20 @@
 import React from "react";
+import axios from "axios";
 import SearchBar from './SearchBar';
-import youtube from "../apis/youtube";
+// import youtube from "../apis/youtube";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
-
 class App extends React.Component{
     state = {videos: [] ,SelectedVideo: null};
     onTermSubmit = async (term) => {
-        const response = await youtube.get('/search',{
+        const response = await axios.create({
+            baseURL: 'https://www.googleapis.com/youtube/v3',
+            params:{
+                part: 'snippet',
+                maxResults: 5,
+                key: API_KEY
+            }
+        }).get('/search',{
             params:{
                 q:term
             }
