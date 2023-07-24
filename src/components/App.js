@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import SearchBar from './SearchBar';
-// import youtube from "../apis/youtube";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
 class App extends React.Component{
@@ -12,7 +11,7 @@ class App extends React.Component{
             params:{
                 part: 'snippet',
                 maxResults: 5,
-                key: API_KEY
+                key: process.env.REACT_APP_A_KEY
             }
         }).get('/search',{
             params:{
